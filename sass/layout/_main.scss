@@ -1,0 +1,49 @@
+@use '../abstracts/index' as *;
+.main{
+    text-align: center;
+    padding: 3em .5em;
+    h2:not(.main__more-h){ 
+        position: relative;
+    }
+    h2:not(.main__more-h),h3{
+        color: $DarkViolet;
+    }
+    // Features
+    &__features{
+        padding: 5em 0;
+        @media (min-width:$desktop) {
+            @include grid();
+            gap: 2em;
+        }
+    }
+    // More Box
+    &__more{
+        color: #fff;
+        padding: 1.5em 1em 4em 1em;
+        background:$DarkViolet url(#{$pattern-topright-main}) no-repeat top right;
+
+        @media (min-width:$desktop) {
+            @include flex(row, space-between);  
+            background: $DarkViolet url(#{$pattern-topright-main-desktop}) no-repeat top right;
+            padding: 1em 5em; 
+            h2{
+                width: 50%;
+            }
+        }
+    }
+    // General
+    @media (min-width:$tablet) {
+        padding: 10em 0;
+    }
+    @media (min-width:$desktop) {
+        text-align: left;
+        h2::before{
+            content: '';
+            position: absolute;
+            top: -1em;
+            height: .02em;
+            width: 10%;
+            background-color: $DarkViolet;
+        }
+    }
+}

@@ -1,0 +1,242 @@
+
+@use '../abstracts/index' as *;
+// General Styles
+html{
+    font-size: 16px;
+}
+body{
+    font-family: 'Karla', sans-serif; 
+    overflow-x: hidden;
+    position: relative;
+}
+.section{
+    max-width: 75rem;
+    margin: 0 auto;
+}
+h1, h2, h3{
+    font-family: 'DM Serif Display', serif;
+}
+h1{
+    font-size: clamp(2rem, 5vw, 3.3rem);
+}
+h2{
+    font-size: clamp(2rem, 5vw, 2.9rem);
+}
+h3{
+    font-size: clamp(1.4rem, 4vw, 2rem);
+}
+h4{
+    text-transform: uppercase;
+}
+button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+.attribution{
+    text-align: center;
+    padding: 1em 0;
+    background-color: $VeryLightGray;
+    a:hover{
+        color: $VeryDarkViolet;
+    }
+}
+ul{
+    list-style: none;
+    padding-left: 0;
+    li{
+        text-transform: uppercase;
+    }
+}
+a{
+    text-decoration: none;
+    color: $DarkGrayishViolet;
+}
+p{
+    color: $GrayishBlue;
+    line-height: 1.8em;
+}
+// General Cta
+.cta{   
+    border: 1.75px solid #fff;
+    cursor: pointer;
+    display: inline-block;
+    padding: .5em 2em;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    transition: background-color, color, .2s;
+    &:hover{
+        background-color: #fff;
+        color: $VeryDarkViolet;
+    }
+}
+// Header cta
+.header-cta{
+    border: 1.75px solid #fff;
+    display: inline-block;
+    transition: background-color, color, .2s;
+    @media (min-width:$tablet) {
+        border-color: $VeryDarkViolet;
+        padding: .5em 2em;
+        &:hover{
+            background-color: $VeryDarkViolet;
+            color: #fff;
+        }
+    }
+    @media (max-width:$tablet) {
+        padding: .5em 3.5em;
+    }
+}
+// Header Section
+.header{
+    padding: .25em 1em;
+    & > *{
+        padding: 1em 0
+    }
+    nav{
+        @media (min-width:$tablet) {
+            @include flex(row, space-between);
+        }
+    }
+    // Menu
+    .nav-menu{
+        @media (max-width: calc($tablet - 1px)){
+            @include flex(row, space-between);
+            position: fixed;
+            top: 0;
+            padding: .5em 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            background: #fff;
+            width: 100%;
+            & > *{
+                padding: 0;
+                margin: 1em;
+            }
+        }
+    }
+    #nav-links{
+        position: fixed;
+        top: 0;
+        z-index: 2;
+        transition: transform .1s;
+        margin: 0;
+        padding: 6em 0;
+        font-weight: 500;
+        font-size: 1.4rem;
+        transform: translateY(-100%);
+        left: 0;
+        letter-spacing: .3rem;
+        text-align: center;
+        right: 0;
+        bottom: 0;
+        // Background color and image
+        background: $VeryDarkViolet url(#{$nav-links-pattern}) no-repeat;
+        background-position: bottom right;  
+        background-size: contain;
+        color: $VeryLightGray;
+        // List items
+        li{
+            @media (max-width:$tablet) {
+                font-size: clamp(1.2rem, 5vw, 1.4rem);
+                margin-bottom: 1.45em;
+            }
+            @media (min-width:$tablet) {
+                font-size: clamp(1.1rem, 3vw, 1.15rem);
+
+                &:not(&:last-of-type){
+                    color: $DarkGrayishViolet;
+                    font-weight: 600;
+                    &:hover{
+                        color: $VeryDarkViolet;
+                    }
+                }
+            }
+        }
+        // Active class
+        &.showMenu{
+            transform: translateY(0);
+        }
+        // Respononsive Menu
+        @media (min-width:$tablet){
+            all: inherit;
+            cursor: pointer;
+            list-style: none;
+            @include flex(row, center);
+            gap: 2em;
+        }
+    }
+    // Buttons
+    #toggle-menu{
+        @media (min-width:$tablet) {
+            display: none;
+        }
+    }
+    // Close Icon
+    #closeIcon{
+        display: none;
+    }
+}
+// Hero Section
+.hero{
+    background-color: $DarkViolet; 
+    color: #fff;
+    text-align: center;
+    @media (min-width:$tablet){
+        background: url(#{$pattern-topleft-hero-desktop}) no-repeat bottom left, url(#{$pattern-bottomright-hero-desktop}) no-repeat top right;;
+        background-color: $DarkViolet;
+    }
+}
+.hero-section{
+    position: relative;
+    img{
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    // Hero Text
+    &__text{
+        background: url(#{$pattern-topleft-hero}) no-repeat top left, url(#{$pattern-bottomright-hero}) no-repeat bottom right;
+        padding: 2em .7em 6em .7em;
+        position: relative;
+        @media (min-width:$tablet) {
+            grid-row: 1 / 2;
+            text-align: left;
+            background: none;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                height: .1em;
+                width: 25%;
+                background-color: #fff;
+            }
+        }
+    }
+    // Hero img
+    &__img{
+        .img-mobile{
+            @media (min-width:$tablet) {
+                display: none;
+            }
+        }
+        .img-desktop{
+            display: none;
+            @media (min-width:$tablet) {
+                display: block;
+            }
+            @media (min-width:$desktop){
+                width: 70%;
+                max-width: 35em;
+                top: 10em;
+                right: 1em;
+                position: absolute;
+            }
+        }
+    }
+    @media (min-width:$tablet) {
+        @include grid();
+        padding: 10em 0;
+    }
+}

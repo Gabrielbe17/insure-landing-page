@@ -1,0 +1,66 @@
+@use '../abstracts/index' as *;
+footer{
+    background: $VeryLightGray url(#{$pattern-topleft-footer}) no-repeat;
+    @media (min-width:$tablet) {
+        background: $VeryLightGray url(#{$pattern-topleft-footer-desktop}) no-repeat top left;
+    }
+}
+.footer{
+    @include flex(column, flex-start);
+    text-align: center;
+    padding: 3em 0;
+    & > *{
+        width: 90%
+    }
+    // footer social
+    &__social{
+        position: relative;
+        ul{
+            @include flex(row, center);
+            gap: 1em;
+        }
+        li a:hover{
+            color: $VeryDarkViolet;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: .07em;
+            background-color: $DarkGrayishViolet;
+        }
+        @media (min-width:$tablet) {
+            @include flex(row, space-between);    
+        }
+    }
+    // footer links
+    &__links{
+        display: grid;
+        padding-top: 2em;
+        gap: 1em;
+        @media (min-width:$tablet) {
+            @include grid();
+            text-align: start;
+        }
+        h4{
+            color: $DarkGrayishViolet;
+            margin-bottom: 1.8em;
+            opacity: .75;
+        }
+        ul{
+            height: 100%;
+        }
+        li{
+            color: $DarkViolet;
+            font-weight: 600;
+            margin-bottom: .5em;
+            opacity: .85;
+            cursor: pointer;
+            &:hover{
+                text-decoration: underline;       
+            }
+        }
+    }
+}
