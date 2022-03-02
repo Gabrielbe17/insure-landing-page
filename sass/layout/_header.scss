@@ -33,19 +33,12 @@ button{
     background-color: transparent;
     border: none;
 }
-.attribution{
-    text-align: center;
-    padding: 1em 0;
-    background-color: $VeryLightGray;
-    a:hover{
-        color: $VeryDarkViolet;
-    }
-}
 ul{
     list-style: none;
     padding-left: 0;
     li{
         text-transform: uppercase;
+        cursor: pointer;
     }
 }
 a{
@@ -90,10 +83,11 @@ p{
 // Header Section
 .header{
     padding: .25em 1em;
-    & > *{
+    & > *:not(nav){
         padding: 1em 0
     }
     nav{
+        padding: .6em 0;
         @media (min-width:$tablet) {
             @include flex(row, space-between);
         }
@@ -237,6 +231,6 @@ p{
     }
     @media (min-width:$tablet) {
         @include grid();
-        padding: 10em 0;
+        padding: 8em 0;
     }
 }

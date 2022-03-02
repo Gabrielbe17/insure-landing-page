@@ -4,6 +4,13 @@ footer{
     @media (min-width:$tablet) {
         background: $VeryLightGray url(#{$pattern-topleft-footer-desktop}) no-repeat top left;
     }
+    .attribution{
+        text-align: center;
+        padding: 1em 0;
+        a:hover{
+            color: $VeryDarkViolet;
+        }
+    }
 }
 .footer{
     @include flex(column, flex-start);
@@ -19,8 +26,11 @@ footer{
             @include flex(row, center);
             gap: 1em;
         }
-        li a:hover{
-            color: $VeryDarkViolet;
+        li i{
+            color: $DarkGrayishViolet;
+            &:hover{
+                color: $VeryDarkViolet;
+            }
         }
         &::after{
             content: '';
@@ -44,15 +54,15 @@ footer{
             @include grid();
             text-align: start;
         }
-        h4{
-            color: $DarkGrayishViolet;
-            margin-bottom: 1.8em;
-            opacity: .75;
-        }
         ul{
             height: 100%;
         }
         li{
+            &:first-child{
+                color: $DarkGrayishViolet;
+                margin-bottom: 1.8em;
+                opacity: .75;
+            }
             color: $DarkViolet;
             font-weight: 600;
             margin-bottom: .5em;
